@@ -1,0 +1,33 @@
+body {
+	background-image: url("/image/14.jpg");
+	background-size: cover;
+}
+
+.center {
+	top: 50%;
+	width: 100%;
+	text-align: center;
+	font-size: 18px;
+	padding-top: 20px;
+}
+
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-bottom: 20px;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

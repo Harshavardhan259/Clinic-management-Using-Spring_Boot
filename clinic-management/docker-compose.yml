@@ -1,0 +1,81 @@
+version: '3'
+services:
+  eureka-server:
+    image: eureka-server:1.0
+    container_name: eureka-server
+    expose:
+    - "8761"
+    ports:
+    - 8761:8761
+    
+  config-server:
+    image: config-server:1.0
+    container_name: config-server
+    ports:
+    - "8888:8888"   
+    environment:
+      - JAVA_OPTS=
+            -DGIT_URL=https://github.com/Harshavardhan259/config.git
+    depends_on:
+      - eureka-server
+              
+  
+  patient-service:
+    image: patient-service:1.0
+    #container_name: patient-service
+    ports:
+    - "9191"
+    environment:
+      - JAVA_OPTS=
+           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mysql://mock-project.cvdgl7vhzcqg.us-east-1.rds.amazonaws.com:3307/patientdb -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)    
+    depends_on:
+      - eureka-server
+      - config-server
+    links:
+        - eureka-server
+        - config-server
+        
+  appointment-service:
+    image: appointment-service:1.0
+    #container_name: appointment-service
+    ports:
+    - "9192"
+    environment:
+      - JAVA_OPTS=
+           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mysql://mock-project.cvdgl7vhzcqg.us-east-1.rds.amazonaws.com:3307/appointmentdb -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)    
+    depends_on:
+      - eureka-server
+      - config-server
+    links:
+        - eureka-server
+        - config-server
+
+  clinic-service:
+    image: clinic-service:1.0
+    #container_name: clinic-service
+    ports:
+    - "9193"   
+    environment:
+      - JAVA_OPTS=
+           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mysql://mock-project.cvdgl7vhzcqg.us-east-1.rds.amazonaws.com:3307/clinicdb -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)    
+    depends_on:
+      - eureka-server
+      - config-server
+    links:
+        - eureka-server
+        - config-server
+        
+  api-gateway:
+    image: api-gateway:2.7.4
+    #container_name: gateway-service
+    ports:
+    - "9194:9194"   
+    environment:
+      - JAVA_OPTS=
+           -DEUREKA_SERVER_URL=http://eureka-server:8761/eureka -DDB_USER=admin -DDB_PASSWORD=welcome1 -DJDBC_URL=jdbc:mysql://mock-project.cvdgl7vhzcqg.us-east-1.rds.amazonaws.com:3307/credentialdb -DCONFIG_SERVER_URL=http://config-server:8888/ #(name of eureka host==eureka container name)    
+    depends_on:
+      - eureka-server
+      - config-server
+    links:
+        - eureka-server
+        - config-server

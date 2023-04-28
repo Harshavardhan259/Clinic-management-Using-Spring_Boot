@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.demo.spring.controller.PatientRestControllerTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.184 s - in com.demo.spring.controller.PatientRestControllerTest

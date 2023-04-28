@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>clinic management</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="/css/cover.css">
+
+
+
+
+<!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+</style>
+
+
+</head>
+<body class=" text-center text-white bg-dark">
+	<!-- <h1>Home Page</h1>
+	<hr>
+	<p>
+		<a th:href="@{find}">Find One Patient</a>
+	</p>
+	<p>
+		<a th:href="@{list}">List All Patient</a>
+	</p>
+	<p>
+		<a th:href="@{registerPatient}">save One Patient</a>
+	</p>
+	<p>
+		<a th:href="@{update}">Update patient</a>
+	</p>
+	
+	<a href="/index">go to Home</a> -->
+		<div
+			class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+			<header class="mb-auto">
+				<div>
+					<h3 class="float-md-start mb-0">Home Page</h3>
+					<nav class="nav nav-masthead justify-content-center float-md-end">
+						<a class="nav-link active" aria-current="page"
+							th:href="@{patient}">Patient Service</a> <a class="nav-link"
+							th:href="@{appointment}">Appointment Service</a> <a
+							class="nav-link" th:href="@{clinic}">Clinic Service</a>
+					</nav>
+				</div>
+			</header>
+		</div>
+	
+		<div class="container">
+			<div class="row row-cols-2 row-cols-lg-4 g-3 g-lg-3">
+				<div class="col">
+					<div class="p-3 border bg-light">
+						<div class="card" style="width: 10rem;">
+							<img src="/image/find.png" class="card-img-top" alt="find">
+							<div class="card-body">
+								<a th:href="@{find}" class="btn btn-primary">Find One Patient</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="p-3 border bg-light">
+						<div class="card" style="width: 10rem;">
+							<img src="/image/list.png" class="card-img-top" alt="list">
+							<div class="card-body">
+								<a th:href="@{list}" class="btn btn-primary">List All Patient by first Name</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="p-3 border bg-light">
+						<div class="card" style="width: 8rem;">
+							<img src="/image/add.png" class="card-img-top" alt="add">
+							<div class="card-body">
+								<a th:href="@{registerPatient}" class="btn btn-primary">save One Patient</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="p-3 border bg-light">
+						<div class="card" style="width: 10rem;">
+							<img src="/image/update2.png" class="card-img-top" alt="update">
+							<div class="card-body">
+								<a th:href="@{update}" class="btn btn-primary">Update patient</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

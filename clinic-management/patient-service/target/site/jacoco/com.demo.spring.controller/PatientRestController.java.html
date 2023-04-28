@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientRestController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patient-service</a> &gt; <a href="index.source.html" class="el_package">com.demo.spring.controller</a> &gt; <span class="el_source">PatientRestController.java</span></div><h1>PatientRestController.java</h1><pre class="source lang-java linenums">package com.demo.spring.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.demo.spring.entites.Patient;
+import com.demo.spring.entites.PatientDTO;
+import com.demo.spring.exception.PatientAlredyExistsException;
+import com.demo.spring.exception.PatientNotFoundException;
+import com.demo.spring.service.PatientService;
+import com.demo.spring.util.Message;
+
+import io.micrometer.core.annotation.Timed;
+
+@RestController
+@RequestMapping(&quot;/patient&quot;)
+<span class="fc" id="L27">public class PatientRestController {</span>
+	
+	@Autowired
+	PatientService patientService;
+	
+	@GetMapping(path=&quot;/{patientId}&quot; ,produces=&quot;application/json&quot; )
+	@Timed(value=&quot;request.patient.find&quot;)
+	public ResponseEntity&lt;Patient&gt; findPatient(@PathVariable(&quot;patientId&quot;) Integer id) throws PatientNotFoundException {
+<span class="fc" id="L35">		return ResponseEntity.ok(patientService.findPatientById(id));</span>
+	}
+	
+	@PostMapping(path=&quot;/register&quot; ,produces = MediaType.APPLICATION_JSON_VALUE , consumes = MediaType.APPLICATION_JSON_VALUE)
+	@Timed(value=&quot;request.patient.register&quot;)
+	public ResponseEntity&lt;Message&gt; register(@RequestBody PatientDTO patientDto ) throws PatientAlredyExistsException{
+<span class="fc" id="L41">		return ResponseEntity.ok(patientService.register(patientDto));</span>
+	}
+	
+	@GetMapping(path=&quot;/list/{fname}&quot; , produces = MediaType.APPLICATION_JSON_VALUE )
+	@Timed(value=&quot;request.patient.list&quot;)
+	public ResponseEntity&lt;List&lt;Patient&gt;&gt; listByPatientName(@PathVariable(&quot;fname&quot;) String fname) throws PatientNotFoundException{
+<span class="fc" id="L47">		List&lt;Patient&gt; patientList = patientService.findAll(fname);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">		if(patientList.isEmpty()) {</span>
+<span class="fc" id="L49">			throw new PatientNotFoundException();</span>
+		}else {
+<span class="fc" id="L51">			return ResponseEntity.ok(patientList);</span>
+		}
+		
+		
+	}
+	
+	@PatchMapping(path=&quot;/update&quot; ,consumes = MediaType.APPLICATION_JSON_VALUE)
+	@Timed(value=&quot;request.patient.update&quot;)
+	public ResponseEntity&lt;Message&gt; updatePatienRecord(@RequestBody PatientDTO patientDTO) throws PatientNotFoundException{
+<span class="fc" id="L60">		return ResponseEntity.ok(patientService.updateRecord(patientDTO));</span>
+	}
+
+	
+	
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

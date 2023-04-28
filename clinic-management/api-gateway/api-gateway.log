@@ -1,0 +1,34 @@
+2023-04-18 12:38:27.498  INFO 12672 --- [main] com.demo.spring.ApiGatewayApplication    : Starting ApiGatewayApplication using Java 17.0.6 on DESKTOP-8VILOK9 with PID 12672 (C:\workspace\practice\clinic-management\api-gateway\target\classes started by HP in C:\workspace\practice\clinic-management\api-gateway)
+2023-04-18 12:38:27.505  INFO 12672 --- [main] com.demo.spring.ApiGatewayApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-04-18 12:38:27.895  INFO 12672 --- [main] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888/
+2023-04-18 12:38:27.895  INFO 12672 --- [main] o.s.c.c.c.ConfigServerConfigDataLoader   : Connect Timeout Exception on Url - http://localhost:8888/. Will be trying the next url if available
+2023-04-18 12:38:27.896  WARN 12672 --- [main] o.s.c.c.c.ConfigServerConfigDataLoader   : Could not locate PropertySource ([ConfigServerConfigDataResource@260f2144 uris = array<String>['http://localhost:8888/'], optional = true, profiles = list['default']]): I/O error on GET request for "http://localhost:8888/api-gateway/default": Connection refused: no further information; nested exception is java.net.ConnectException: Connection refused: no further information
+2023-04-18 12:38:29.467  INFO 12672 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-04-18 12:38:29.850  INFO 12672 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 363 ms. Found 1 JPA repository interfaces.
+2023-04-18 12:38:30.385  INFO 12672 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=76bf1990-0224-3225-ba19-22bb7ba567ca
+2023-04-18 12:38:30.852  INFO 12672 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-04-18 12:38:30.857  INFO 12672 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-04-18 12:38:30.861  INFO 12672 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-04-18 12:38:31.110  WARN 12672 --- [main] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2023-04-18 12:38:31.141  INFO 12672 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-04-18 12:38:31.169 ERROR 12672 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+

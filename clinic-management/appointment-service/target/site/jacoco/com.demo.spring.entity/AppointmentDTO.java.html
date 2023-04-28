@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AppointmentDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">appointment-service</a> &gt; <a href="index.source.html" class="el_package">com.demo.spring.entity</a> &gt; <span class="el_source">AppointmentDTO.java</span></div><h1>AppointmentDTO.java</h1><pre class="source lang-java linenums">package com.demo.spring.entity;
+
+public class AppointmentDTO {
+	
+	
+	private Integer appointmentId;
+	private Integer doctorId;
+	private Integer patientId;
+	private String date;
+	
+	
+	
+<span class="fc" id="L13">	public AppointmentDTO(Integer doctorId, Integer patientId, String date) {</span>
+<span class="fc" id="L14">		this.doctorId = doctorId;</span>
+<span class="fc" id="L15">		this.patientId = patientId;</span>
+<span class="fc" id="L16">		this.date = date;</span>
+<span class="fc" id="L17">	}</span>
+	
+	public Integer getAppointmentId() {
+<span class="fc" id="L20">		return appointmentId;</span>
+	}
+
+
+	public void setAppointmentId(Integer appointmentId) {
+<span class="fc" id="L25">		this.appointmentId = appointmentId;</span>
+<span class="fc" id="L26">	}</span>
+
+
+	public Integer getDoctorId() {
+<span class="fc" id="L30">		return doctorId;</span>
+	}
+
+
+	public void setDoctorId(Integer doctorId) {
+<span class="nc" id="L35">		this.doctorId = doctorId;</span>
+<span class="nc" id="L36">	}</span>
+
+
+	public Integer getPatientId() {
+<span class="fc" id="L40">		return patientId;</span>
+	}
+
+
+	public void setPatientId(Integer patientId) {
+<span class="nc" id="L45">		this.patientId = patientId;</span>
+<span class="nc" id="L46">	}</span>
+
+
+	public String getDate() {
+<span class="fc" id="L50">		return date;</span>
+	}
+
+
+	public void setDate(String date) {
+<span class="nc" id="L55">		this.date = date;</span>
+<span class="nc" id="L56">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

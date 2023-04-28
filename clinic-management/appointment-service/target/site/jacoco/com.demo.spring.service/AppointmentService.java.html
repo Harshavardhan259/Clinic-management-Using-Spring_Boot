@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AppointmentService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">appointment-service</a> &gt; <a href="index.source.html" class="el_package">com.demo.spring.service</a> &gt; <span class="el_source">AppointmentService.java</span></div><h1>AppointmentService.java</h1><pre class="source lang-java linenums">package com.demo.spring.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.demo.spring.entity.Appointment;
+import com.demo.spring.entity.AppointmentDTO;
+import com.demo.spring.entity.PatientDTO;
+import com.demo.spring.exceptions.PatientNotFoundException;
+import com.demo.spring.repository.AppointmentRepository;
+import com.demo.spring.utiles.Message;
+import com.demo.spring.utiles.ServerConfiguration;
+
+@Service
+@EnableConfigurationProperties(ServerConfiguration.class)
+<span class="fc" id="L25">public class AppointmentService {</span>
+
+	@Autowired
+	AppointmentRepository  apprepository;
+	
+	@Autowired
+	RestTemplate restTemplate;
+	
+	@Autowired
+	ServerConfiguration serverConfiguration;
+	
+	public Message addVisit(AppointmentDTO appointmentDTO) throws PatientNotFoundException {
+		
+<span class="fc" id="L38">		HttpHeaders headers = new HttpHeaders();</span>
+<span class="fc" id="L39">		headers.set(&quot;Accept&quot;, MediaType.APPLICATION_JSON_VALUE);</span>
+
+<span class="fc" id="L41">		HttpEntity&lt;Void&gt; req = new HttpEntity&lt;&gt;(headers);</span>
+
+		
+			
+<span class="fc" id="L45">			ResponseEntity&lt;PatientDTO&gt; responce1 = restTemplate.exchange(serverConfiguration.getPatientServer()+&quot;/patient/&quot; +appointmentDTO.getPatientId(),</span>
+					HttpMethod.GET, req, PatientDTO.class);
+		
+<span class="fc" id="L48">			PatientDTO patientDTO = responce1.getBody();</span>
+<span class="pc bpc" id="L49" title="2 of 6 branches missed.">			if( patientDTO!=null &amp;&amp; patientDTO.getPatientId()!=null &amp;&amp; patientDTO.getPatientId().equals(appointmentDTO.getPatientId())) {</span>
+
+<span class="fc" id="L51">					Appointment appointment = new Appointment(appointmentDTO.getAppointmentId(), appointmentDTO.getDoctorId(), appointmentDTO.getPatientId(), appointmentDTO.getDate());</span>
+<span class="fc" id="L52">					apprepository.save(appointment);</span>
+<span class="fc" id="L53">					return new Message(&quot;Appointment is Added&quot;);</span>
+				
+				
+			}else {
+<span class="fc" id="L57">				throw new PatientNotFoundException();</span>
+			}
+		
+	}
+	
+	public List&lt;Appointment&gt; listAllForPatient(Integer patientId){
+<span class="fc" id="L63">		return apprepository.findAllByPatientId(patientId);</span>
+	}
+	
+	public List&lt;Appointment&gt; listAllForDoctore(String date){
+		
+<span class="fc" id="L68">		return apprepository.findByDate(date);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

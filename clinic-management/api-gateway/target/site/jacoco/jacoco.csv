@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+api-gateway,com.demo.spring.controller,CredentialRestController,0,15,0,0,0,3,0,3,0,3
+api-gateway,com.demo.spring.entity,CredentialDTO,0,9,0,0,0,3,0,3,0,3
+api-gateway,com.demo.spring.entity,Credential,0,18,0,0,0,4,0,4,0,4
+api-gateway,com.demo.spring,ApiGatewayApplication,5,86,0,0,2,16,1,7,1,7
+api-gateway,com.demo.spring,MyServerConfiguration,0,21,0,0,0,7,0,4,0,4
+api-gateway,com.demo.spring.service,CredentialService,0,57,0,6,0,11,0,6,0,3
+api-gateway,com.demo.spring.exception,UseNotFoundException,0,9,0,0,0,2,0,2,0,2
+api-gateway,com.demo.spring.util,Message,0,16,0,0,0,8,0,4,0,4

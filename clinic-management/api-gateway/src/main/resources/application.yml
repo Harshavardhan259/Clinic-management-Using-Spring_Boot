@@ -1,0 +1,63 @@
+server:
+  port: 9194
+
+spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    password: root
+#    url: jdbc:mysql://localhost:3307/credentialdb
+#    username: root
+  cloud :    
+        gateway:
+           enabled: true
+           routes:
+           
+           - id: patient-service
+             uri: lb://patient-service
+             predicates:
+              - Path=/patient/**   
+        
+           - id: clinic-service
+             uri: lb://clinic-service
+             predicates:   
+              - Path=/speciality/**
+              
+           - id: clinic-service
+             uri: lb://clinic-service
+             predicates:   
+              - Path=/doctor/**
+              
+           - id: clinic-service
+             uri: lb://clinic-service
+             predicates:   
+              - Path=/diagnostic/**
+        
+           - id: appointment-service
+             uri: lb://appointment-service
+             predicates:   
+              - Path=/appointment/** 
+
+  config:
+   import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888/}
+  jpa:
+    show-sql: true
+  application:
+    name: api-gateway
+
+eureka:
+  client:
+      register-with-eureka: true
+      service-url:
+          defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+
+logging:
+  file:
+    name: api-gateway.log
+
+management:
+   endpoints:
+       web:
+         exposure:
+            include:
+            - prometheus
+            - health

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patient-service</a> &gt; <a href="index.source.html" class="el_package">com.demo.spring.service</a> &gt; <span class="el_source">PatientService.java</span></div><h1>PatientService.java</h1><pre class="source lang-java linenums">package com.demo.spring.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.demo.spring.entites.Patient;
+import com.demo.spring.entites.PatientDTO;
+import com.demo.spring.exception.PatientAlredyExistsException;
+import com.demo.spring.exception.PatientNotFoundException;
+import com.demo.spring.repository.PatientRepository;
+import com.demo.spring.util.Message;
+
+@Service
+<span class="fc" id="L17">public class PatientService {</span>
+	
+	@Autowired
+	PatientRepository patientRepository;
+	
+	public Patient findPatientById(Integer id) throws PatientNotFoundException  {
+<span class="fc" id="L23">		Optional&lt;Patient&gt; patiOps = patientRepository.findById(id);</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">		if(patiOps.isPresent()) {</span>
+<span class="fc" id="L25">			return patiOps.get();</span>
+		}else {
+<span class="fc" id="L27">			throw new PatientNotFoundException();</span>
+		}
+	}
+	
+	public Message register(PatientDTO patientDTO) throws PatientAlredyExistsException {
+<span class="fc bfc" id="L32" title="All 2 branches covered.">		if(patientRepository.existsByEmail(patientDTO.getEmail())) {</span>
+<span class="fc" id="L33">			throw new PatientAlredyExistsException();</span>
+		}else {
+<span class="fc" id="L35">			Patient patient = new Patient(patientDTO.getPatientId(), patientDTO.getfirstName(), </span>
+<span class="fc" id="L36">					patientDTO.getlastName(), patientDTO.getEmail());</span>
+<span class="fc" id="L37">			 patientRepository.save(patient);</span>
+<span class="fc" id="L38">			 return new Message(&quot;Patient is registered&quot;);</span>
+		}
+	}
+
+	public List&lt;Patient&gt; findAll(String fname) {
+<span class="fc" id="L43">		return patientRepository.findAllByName(fname);</span>
+	}
+	
+	public Message updateRecord(PatientDTO patientDTO) throws PatientNotFoundException{
+<span class="fc bfc" id="L47" title="All 2 branches covered.">		if(patientRepository.existsById(patientDTO.getPatientId())) {</span>
+<span class="fc" id="L48">			patientRepository.update(patientDTO.getPatientId(), patientDTO.getfirstName(), patientDTO.getlastName(), patientDTO.getEmail());</span>
+<span class="fc" id="L49">			return new Message(&quot;Patient Record is Updated&quot;);</span>
+		}else {
+<span class="fc" id="L51">			throw new PatientNotFoundException();</span>
+		}
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

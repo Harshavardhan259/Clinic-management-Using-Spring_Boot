@@ -1,0 +1,3 @@
+com\demo\spring\controller\DoctorRestControllerTest.class
+com\demo\spring\controller\DiagnosticRestControllerTest.class
+com\demo\spring\controller\DoctorSpecialityRestControllerTest.class

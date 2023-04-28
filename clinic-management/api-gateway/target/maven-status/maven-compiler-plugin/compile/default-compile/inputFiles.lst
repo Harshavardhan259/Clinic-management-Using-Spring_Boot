@@ -1,0 +1,9 @@
+C:\workspace\mock_project\clinic-management\api-gateway\src\main\java\com\demo\spring\ApiGatewayApplication.java
+C:\workspace\mock_project\clinic-management\api-gateway\src\main\java\com\demo\spring\repository\CredentialRepository.java
+C:\workspace\mock_project\clinic-management\api-gateway\src\main\java\com\demo\spring\MyServerConfiguration.java
+C:\workspace\mock_project\clinic-management\api-gateway\src\main\java\com\demo\spring\entity\CredentialDTO.java
+C:\workspace\mock_project\clinic-management\api-gateway\src\main\java\com\demo\spring\util\Message.java
+C:\workspace\mock_project\clinic-management\api-gateway\src\main\java\com\demo\spring\controller\CredentialRestController.java
+C:\workspace\mock_project\clinic-management\api-gateway\src\main\java\com\demo\spring\service\CredentialService.java
+C:\workspace\mock_project\clinic-management\api-gateway\src\main\java\com\demo\spring\exception\UseNotFoundException.java
+C:\workspace\mock_project\clinic-management\api-gateway\src\main\java\com\demo\spring\entity\Credential.java

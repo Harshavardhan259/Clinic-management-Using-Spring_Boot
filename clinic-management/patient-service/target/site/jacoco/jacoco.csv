@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+patient-service,com.demo.spring.entites,Patient,0,30,0,0,0,12,0,6,0,6
+patient-service,com.demo.spring.entites,PatientDTO,0,24,0,0,0,9,0,5,0,5
+patient-service,com.demo.spring.controller,PatientRestController,0,36,0,2,0,8,0,6,0,5
+patient-service,com.demo.spring.service,PatientService,0,83,0,6,0,16,0,8,0,5
+patient-service,com.demo.spring,PatientServiceApplication,5,23,0,0,2,3,1,2,1,2
+patient-service,com.demo.spring.exception,PatientAlredyExistsException,0,9,0,0,0,2,0,2,0,2
+patient-service,com.demo.spring.exception,PatientNotFoundException,0,9,0,0,0,2,0,2,0,2
+patient-service,com.demo.spring.util,Message,7,9,0,0,4,4,2,2,2,2

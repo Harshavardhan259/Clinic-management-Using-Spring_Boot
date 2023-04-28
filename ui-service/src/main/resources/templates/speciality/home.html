@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Speciality Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="/css/cover.css">
+
+
+
+
+<!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+</style>
+
+
+</head>
+<body class=" text-center text-white bg-dark">
+	<!-- <h1>Home Page</h1>
+	<hr>
+	<p>
+		<a th:href="@{registerDoctor}">Add Doctor To Speciality</a>
+	</p>
+	<p>
+		<a th:href="@{listDoctorSpeciality}">List All doctor in a Speciality</a>
+	</p>
+	
+	<p>
+		<a th:href="@{removeDoctor}">Remove a doctor from a speciality</a>
+	</p>
+	<a href="/clinic">go to Home</a> -->
+	
+	<div
+			class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+			<header class="mb-auto">
+				<div>
+					<h3 class="float-md-start mb-0">Home Page</h3>
+					<nav class="nav nav-masthead justify-content-center float-md-end">
+					<a class="nav-link" aria-current="page" th:href="@{clinic}">Doctor
+						Service</a> <a class="nav-link active" th:href="@{speciality}">Speciality
+						Service</a> <a class="nav-link " th:href="@{diagnostic}">Diagnostic
+						Service</a>
+				</nav>
+				</div>
+			</header>
+		</div>
+	
+		<div class="container">
+			<div class="row row-cols-2 row-cols-lg-3 g-3 g-lg-3">
+				<div class="col">
+					<div class="p-3 border bg-light">
+						<div class="card" style="width: 10rem;">
+							<img src="/image/add.png" class="card-img-top" alt="find">
+							<div class="card-body">
+								<a th:href="@{registerDoctor}" class="btn btn-primary">Add Doctor To Speciality</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="p-3 border bg-light">
+						<div class="card" style="width: 10rem;">
+							<img src="/image/list.png" class="card-img-top" alt="list">
+							<div class="card-body">
+								<a th:href="@{listDoctorSpeciality}" class="btn btn-primary">List All doctor in a Speciality</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="p-3 border bg-light">
+						<div class="card" style="width: 8rem;">
+							<img src="/image/delete.png" class="card-img-top" alt="add">
+							<div class="card-body">
+								<a th:href="@{removeDoctor}" class="btn btn-primary">Remove a doctor from a speciality</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+</body>
+</html>
